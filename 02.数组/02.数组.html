@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//1. 创建数组
+        var names = ["miao","miaowu",];
+// 实际上开发的时候，数组里存放对象类型，对象里存的是键值对
+        var goods = [
+            {name:"苹果电脑",price:"19999",imgURL="http://keaikeaihttps://github.com/miaomiaotou/pokemonGo"},
+            {name:"sanxing电脑",price:"18888",imgURL="http://keaikeaihttps://github.com/miaomiaotou/pokemonGo/"},
+            {name:"苹果电脑",price:"19999",imgURL="https://github.com/miaomiaotou/pokemonGo/"},
+        ];
+// 这里的imgUR的值有点问题访问不到，会保存，先忽略一下哈哈哈哈
+
+// 注意事项，数组里可以放不同的类型,但是一般不要放不同的类型
+         var info = ["why",18,false,["haha"]];
+// 保存自己喜欢的电影
+        var moves = [
+         "神奇宝贝1","神奇宝贝2","pokemon3"
+        ];
+
+
+
+// 2.数组的基本操作，
+
+//2.1 获取数组的长度属性：length
+// 这是个属性，所以调用的时候不用加()，但是函数调用的时候需要加()
+  console.log(moves.length);
+// 输出3
+
+//2.2 获取数组里边的某个值，通过索引值（下标值/序号），是从0开始的
+// 根据索引值获取数据,获取第二个数据，对应的索引值是1
+var m = moves[1];
+console.log(m);
+// 如果我们传入不存在的索引值,超过的值或者负数，返回的数据是undefined，不会报错
+var m = moves[10];
+var m = moves[-1];
+
+// 3.数组的遍历（数组里还有很多方法）
+
+
+
+
+
+
+ 
+
+
+
+
+    </script>
+</body>
+</html>

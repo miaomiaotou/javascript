@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 类里的属性和方法
+
+        // 链表里边
+        // head 属性  一个一个的节点（由两部分组成：data,next）  head指向第一个节点
+        // 然后第一个节点的next，指向第二个节点，之后一次类推
+        
+        // 封装链表的类
+         function linkList(){
+            //  里边的属性
+            this.head = null
+            this.length = 0
+            // length用来保存链表的长度
+
+            
+            // 内部的类
+            function node(data,next){
+                this.data = data 
+                this.next = null
+            }
+
+
+            // 链表相关的操作(增删改查)，跟数组比较相似
+            // 链表是一个能替代数组的结构
+            // 1.向列表尾部添加一个新的元素
+            append(Element)
+
+            // 2.向列表特定的位置插入一个新的元素
+            insert(position,Element)
+
+            // 3.把对应位置的元素删除
+            removeAt(position)
+
+            // 4.从链表中移除某一元素
+            remove(Element)
+
+            // 5.修改某个元素的位置,把这个位置原来的数据修改，换成最新的数据
+            update(position)
+
+            // 6.获取对应位置的元素
+            get(position)
+
+            // 7.给一个元素,返回对应的位置,如果链表中没有的话返回-1
+            indexOf(Element)
+
+
+
+
+
+         }
+        
+
+
+    </script>
+</body>
+</html>

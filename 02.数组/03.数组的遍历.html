@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    //1.定义了一个数字
+       var names = ["why","lilei","miamiaotou","darenmaomaotou","haha"];
+   // 对数组进行遍历,这里的i是写死的
+   for (var i = 0; i < 5; i++){
+       console.log(names[i])
+   }
+
+   //i不写死的情况下，
+   for (var i = 0; i < names.length; i++){
+       console.log(names[i])
+   }
+// 注意，访问数组访问上午最后一个元素，是length-1  
+
+// ES6的写法
+for (let i in names){
+
+}
+// 或者
+for (let i of names){
+
+}
+       
+//2. 反向遍历数组里的每一元素,注意下标减一
+for(var i = names.length-1; i >= 0;  i--){
+    console.log(i)
+}
+// 3.将数组中所有的元素使用#进行分割,然后拼接起来
+// 首先拿到每个元素
+var message = "";
+// 先定义一个空的字符串
+for(var i = 0; i < names.length; i++){
+    console.log(names[i]);
+ // 把i一次加进message里，
+   message+=names[i];
+if (i!==names.length-1){
+// 再加#  
+    // message+="# "
+}}
+console.log(message)
+
+// 求数组中数字的和以及平均值
+var sum =0;
+var nums =[10,8,99,66,3]
+for( var i=0;i<nums.length;i++){
+    console.log(nums[i]);
+    
+    // sum=sum+sum[i];
+    // 这种写法不行啊，还的
+    sum+=nums[i];
+  
+}
+console.log(sum);
+var avg = sum/nums.length;
+console.log(avg)
+
+
+   </script> 
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 二进制转成十进制，有固定的算法，从上除2取余，然后从下往上读，相当于先进后出
+    // 从后往前，依次压如栈，在从栈顶依次再取出来
+    // 首先封装栈
+    function Stack(){
+    // 基于数组的所以必须先初始化一个空的
+        this.items = [];
+
+        Stack.prototype.pop = function(){
+        return this.items.pop()
+    }
+        Stack.prototype.push = function(Element){
+        this.items.push(Element)
+      }
+      Stack.prototype.isEmpty = function(){
+         return this.items.length ==0
+     }
+    }
+    // 再要封装函数
+    function dectobin(dnumber){
+        // 定义一个栈对象，得在上边封装好了
+        var s = new Stack()
+        //2. xuhuan
+        while(dnumber>0){
+            // 2.1 获取余数，并放入栈中,然后获取运算的结果作为下一次预算的被除数
+            // 2.2 Math.floor(x),返回小于等于x的最大整数，取整
+            s.push(dnumber%2);
+            dnumber = Math.floor(dnumber/2)
+          }
+       //3.从栈中取出余数，都是0和1,放到一个变量里,不为空就一直返回
+       var  binString = '';
+       while(!s.isEmpty()){
+           binString+=s.pop()
+       }
+       return binString
+    }
+//  试一下能不能用
+    alert(dectobin(100))
+
+    </script>
+</body>
+</html>

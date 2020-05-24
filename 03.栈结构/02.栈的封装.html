@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    //基于数组实现，在栈里放数组，注意是怎么封装的，最好是封装一个类
+
+    //封装栈类
+    function Stack(){
+        // 栈的属性
+        this.items =[]
+
+    }
+    // 栈的使用，栈的相关操作,六个方法
+  
+    push(Element);
+    // 添加一个新元素到栈顶
+    pop();
+    // 删除栈顶的元素，同时返回被移除的元素
+    peek();
+    // 返回栈顶的元素，不做任何的修改
+    isEmpty();
+    // 如果栈里没有任何元素就返回true,否则返回false
+    size();
+    // 返回栈里的元素个数，和length很相似
+    toString()
+    // 将栈结构的内容以字符串形式返回
+    // 现在，我们可以在类中一一实现
+    // method:和某一个对象实例有联系
+    
+
+//1. 使用之前将栈的相关方法封装好，这样封装，一定要学会这样的封装思想
+    function Stack(){
+        this.items = [];
+    // 1.将元素加入栈，给stack添加了一个方法
+    // 一般用这种的,相当于对于整个类添加了方法
+    Stack.prototype.push = function(Element){
+        // push是数组的方法
+        this.items.push(Element)
+    }
+    // 2.从栈中取出元素
+    Stack.prototype.pop = function(){
+        return this.items.pop()
+    }
+    // 3.查看栈顶元素(上一步已经把最顶上的弹出了，就只剩下倒数第二个在最上边了)
+    Stack.prototype.peek = function(){
+        return this.items[this.items.length-1]
+    }
+    // 判断栈是否为空
+     Stack.prototype.isEmpty = function(){
+         return this.items.length ==0
+        //  ==判断
+     }
+    //  获取栈中元素的个数
+    Stack.prototype.size = function(){
+        return this.items.length
+    }
+    // tostring
+    Stack.prototype.toString = function(){
+        var resultString = "";
+        for (var i=0;i<items.length;i++){
+           resultString+=this.items[i]
+
+        }
+    }
+   }
+
+    // 2.使用的时候，这样使用
+    var s = new Stack()
+    s.push(20);
+    s.push(19);
+    s.push(18); 
+    s.push(17);
+    s.push(16);
+    s.push(15);
+    // console.log(s)
+    alert(s)
+
+    //使用pop 
+    s.pop();
+
+    
+
+
+   </script>
+</body>
+</html>

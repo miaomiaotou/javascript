@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+    //规则改为围成一圈，开始数数，数到数字的人淘汰
+    // 剩下的人获得胜利，请问剩下的是哪一个位置的人
+    // 封装于一个基于队列的函数
+    // 参数：所有参与人的姓名，基于的数字（固定的）
+    // 结果：最终剩下的一个人的姓名
+
+    // 思路，一次把他们放进一个队列，第一个人数1不该淘汰，就把这个人放到队列的最后一个，第二个数2也是同样的道理
+    // 等最后size=1的时候，就是获胜的人，然后取出下标值
+
+
+    function passgame(namelist,num){
+        // 创建队列结构
+        var q = new Queue;
+        // 把所有的人一次加入队列中
+        for (var i= 0;i<namelist.length;i++){
+            q.enqueue(namelist[i])
+        }
+        // 开始数数字，不是num的时候，重新加入到队伍的末尾，如果是num这个数字的时候，将其删除掉
+        
+        while(q.size()>=1){
+            for(var i = 0;i<num-1;i++){
+                // num数字之前的人重新放入到队列的末尾
+            q.enqueue(q.dequeue())
+        }
+        //num对应的这个人，直接从队列中删除
+        queue.dequeue()
+    }
+        // 获取剩下的人
+        var endname = q.front;
+        alert(endname)
+        return namelist.indexof(endname)
+
+    }
+
+
+    
+
+
+  </script>  
+</body>
+</html>

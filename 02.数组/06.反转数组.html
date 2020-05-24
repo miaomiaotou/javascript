@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 反转数组就是把数组完全反过来排序，思路就是交换，先搞一个临时的变量
+        // var nums =[10,8,99,66,3];
+        // var temp = nums[0];
+        // nums[0] = nums[nums.length-1];
+        // nums[nums.length-1] = temp; 
+
+// 所以遍历的次数小于length/2
+var nums =[10,8,99,66,3];
+for (var i = 0;i<nums.length/2;i++){
+    var tem = nums[i];
+    nums[i] = nums[nums.length-1-i];
+    nums[nums.length-1-i]= tem;
+
+}
+console.log(nums)
+        
+    </script>
+</body>
+</html>
