@@ -50,16 +50,16 @@
     Stack.prototype.peek = function(){
         return this.items[this.items.length-1]
     }
-    // 判断栈是否为空
+    // 4.判断栈是否为空
      Stack.prototype.isEmpty = function(){
          return this.items.length ==0
         //  ==判断
      }
-    //  获取栈中元素的个数
+    //  5.获取栈中元素的个数
     Stack.prototype.size = function(){
         return this.items.length
     }
-    // tostring
+    // 6.tostring
     Stack.prototype.toString = function(){
         var resultString = "";
         for (var i=0;i<items.length;i++){
