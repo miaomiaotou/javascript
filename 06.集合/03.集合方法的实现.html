@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function Set(){
+        // 属性，具体的见上一个封装集合类
+          this.items = {};
+
+        // 方法
+
+        // 1.向集合添加一个新的元素
+        Set.prototype.add = function(value){
+            // 判断当前的集合中是否已经包含该元素
+            if(this.has(value)){
+                return false
+            }
+            else{
+                // 将元素添加到集合中,将object对象的key和value， 都换成新的那个value
+
+                this.items[value] = value;
+                return true
+            
+            }
+
+        }
+        // 2.如果值在集合中，返回true
+        Set.prototype.has = function(value){
+            return this.items.hasOwnProperty(value)
+        }
+        
+        //3.从集合移除一个元素
+        Set.prototype.remove = function(value){
+            // 判断是否包含,不包含无法删除
+            if(!this.has(value)){
+                return false
+            }else{
+                // 将元素从集合中删除
+                delete this.items[value]
+                return true
+            }
+        }
+        // 4.clear，移除集合中的所有元素
+        Set.prototype.clear = function(){
+            // 指向一个新的对象，就相当于清空了，没有必要遍历
+            this.items = {}
+        }
+
+        //  5.size方法，返回元素的个数
+        Set.prototype.size = function(){
+            return Object.keys(this.items).length
+        }
+        // 6.获取集合中的所有值,这种情况下返回的是一个数组
+        Set.prototype.values = function(){
+            // 返回object对象里边的，items对象里边的keys，这里装的就是value的值
+            return Object.keys(this.items)
+        }
+    }
+
+
+// 集合类的测试，测试set类
+//1. 先创建set类
+var set = new Set;
+// 1.添加元素
+alert(set.add("abc"));
+alert(set.add("abc"));
+alert(set.add("bcd"));
+alert(set.add("cbs"));
+alert(set.add("mba"));
+
+// 2.返回集合中的所有元素
+alert(set.value())
+
+// 3.删除元素
+alert(set.remove("abc"))
+alert(set.remove("abc"))
+
+// 
+
+
+    </script>
+</body>
+</html>
