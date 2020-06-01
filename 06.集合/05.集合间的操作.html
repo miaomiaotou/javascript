@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     // 1.并集
+        // 意思是一个元素既存在于A也存在于B
+        // 思路
+        // 先获取到a里所有的元素，添加到一个新的集合里边，再遍历B的所有元素，过程当中判断一下，之前的新的集合里边是否已经包含了这个元素
+        // 如果包含B里边的某个元素了，就不用添加到新的集合里边了，如果不包含了，就添加到新的集合里边
+        // 最后形成的新的集合，就是并集,
+        // 写完注意测试的方法，截图
+        
+        function Set(){
+            this.items = {};
+        // 1.并集
+        Set.prototype.union = function(otherSet){
+            // this:当前的集合对象，相当于集合A
+            // otherSet:就相当于集合B
+            // 求这两个的并集
+
+            // 1.创建新的集合
+            var union = new Set();
+            // 2.将a集合中的元素添加到新的元素里边
+            // 首先拿到所有的元素
+            var value = this.values();
+            for(var i= 0;i<value.length;i++){
+                // 遍历之后一个个放到新的集合里边
+                unionSet.add(values[i])
+            }
+            // 取出B集合中的元素，判断是否需要加到新的集合里,add方法本来就带重复判断
+            values = otherSet.values();
+            for(i = 0;i<values.length;i++){
+                unionSet.add(values[i]);
+
+            }
+            return unionSet
+
+        }
+
+    // 2.交集，元素及存在于A中，也存在于B中
+        // 思路：先创建一个新的集合，然后遍历集合A，取出A所有的元素，其中的某个元素，判断一下是否存在集合B里，不存在就跳过，
+        // 存在就放到新的集合里边
+
+        Set.prototype.intersection= function(otherSet){
+             // this:当前的集合对象，相当于集合A
+            // otherSet:就相当于集合B
+            // 求这两个的交集
+
+            // 1..创建新的集合
+          var union = new Set();
+        //   从A中取出一个个元素，判断是否存在于B中，存在就放入新的集合中
+        for(var i = 0;i<values.length;i++){
+            // 先取出来
+            var item = values[i]
+            // 然后判断
+            if(otherSet.has(item)){
+                intersection.add(item)
+            }
+        }
+        return intersection
+        }
+        
+
+    // 3.差集，元素存在于A，不存在于B
+        // 思路：创建一个新的集合，从A中取出所有的元素，
+        // 
+       Set.prototype.differenceSet = function(otherSet){
+            // this:当前的集合对象，相当于集合A
+            // otherSet:就相当于集合B
+            // 求这两个的差集
+
+             // 1..创建新的集合
+          var union = new Set();
+        //   从A中取出一个个元素，判断是否存在于B中，不存在就放入新的集合中
+        for(var i = 0;i<values.length;i++){
+            // 先取出来
+            var item = values[i]
+            // 然后判断,和之前的交集判断条件相反
+            if(!otherSet.has(item)){
+                intersection.add(item)
+            }
+        }
+        return differenceSet
+
+       }
+
+
+    // 子集的判断，判断A是否是B的子集，从集合A里的元素，必然也在B里，A是B的子集
+    Set.prototype.subset = function(otherSet){
+          // this:当前的集合对象，相当于集合A
+            // otherSet:就相当于集合B
+            // 判断A是不是B的子集
+            // 遍历集合A中的所有元素，如果发现，集合A中的元素，在集合B中不存在，那就false
+            // 如果遍历了整个集合，依然没有返回false，那么返回true即可
+            // 先把元素都取出来再遍历
+            var values = this.values
+            for(var i = 0;i<values.length;i++){
+                var item = values[i]
+                if(!otherSet.has(item)){
+                    return false
+                }
+
+            }
+            return false
+
+        
+    }
+
+
+
+
+
+
+
+        }
+
+    </script>
+</body>
+</html>
