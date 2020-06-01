@@ -122,7 +122,7 @@ function linkList(){
                 return current.data
 
             }
-            // 5.updata方法
+            // 5.updata方法，跟获取节点比较像
             linkList.prototype.updata = function (position,newdata){
             // 越界判断
             if(position<0||position>=this.length){
@@ -140,7 +140,51 @@ function linkList(){
             return true
             
             }
-            // 6.indexof 
+            // 6.indexof,返回元素所在链表的索引，如果链表中没有该元素则返回-1
+            linkList.prototype.indexOf = function(data){
+                // 1.定义变量
+                var current =this.head
+                var index = 0;
+                // 开始查找
+                while(current){
+                    if(current.data==data){
+                        return index
+                    }
+                    current= current.next
+                    index++
+                }
+                // 找到最后没有找到，返回-1
+                return -1
+            }
+            // 7.removeAt(position),把特定位置的元素删除了
+            // 注意：没有指向的元素会自动被回收
+            linkList.prototype.removeAt = function(position){
+                // 越界判断，
+                if(position<0||position>=this.length){
+                    return false
+                }
+                // 判断是否删除的是第一个节点
+                if(position==0){
+                    this.head=this.head.next
+                }
+                else{
+                    // 不是第一个节点的话
+                    var index = 0;
+                    var current = this.head;
+                    while(current){
+                        if(current.next==position){
+                            current=current.next
+                            
+                        }
+                    }
+
+
+                }
+
+
+
+            }
+          
 
 
             }
