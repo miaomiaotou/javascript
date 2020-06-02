@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 封装链表的类
+// 简书：https://www.jianshu.com/p/7a2d072a6c3e
+function linkList(){
+            //  里边的属性
+            this.head = null
+            this.length = 0
+            // length用来保存链表的长度,head指向null
+
+            
+            // 内部的类
+            function node(data,next){
+                this.data = data 
+                this.next = null
+                // 指向null
+            }
+           
+
+            // 方法（链表相关的操作）
+            // 1.向列表尾部添加一个新的元素
+            linkList.prototype.append = function(data){
+                // 判断是否为第一个节点,注意用this,this指的是当前环境的，别忘了带上这个
+                // 为空就是是第一个节点，创建一个node，然后指向它。
+                // 否则是不是第一个节点，直接再创造一个node就行了
+               
+                // 1.创建一个新的节点
+                this.head = new Node(data)
+                // 2.2 判断是否添加的是第一个节点
+                if(this.length==0){
+                    // 2.1是第一个节点
+                    this.head = newNode
+                   // 指向新的节点,注意指向的写法
+                    }
+                    else{
+                        //2.2 不是第一个节点的时候， 通过while找到最后一个节点（判断是否为最后一个节点），
+                        //    当为最后一个节点的时候，指向它，current.next = newNode
+                        var current = this.head
+                        while(current.next){
+                            current = current.next
+                        }
+                        //当为最后一个节点的时候，指向它，current.next = newNode
+                        current.next = newNode
+                       }
+                    // 2.3.length+1
+                    this.length +=1
+                   }
+            
+            // 2.toString的实现,遍历每一个节点，并且从中取出元素，并以字符串形式返回，拼接成字符串，主要麻烦的地方是获取每一个元素都是从head开头
+                linkList.prototype.toString = function(){
+                    // (1.先定义一个变量
+                    var current = this.head
+                    var listString = ""
+                    // (2.循环获取节点 
+                    while(current){
+                        // 拼接起来，用空格隔开
+                       listString+=current.data+""
+                       //指向下一个要不然就只添加第二个，就是个死循环
+                       current = current.next
+                }
+                // (3.返回
+                return listString
+               }
+            
+            // 3.向列表特定的位置插入一个新的元素
+            // 首先要有两个人参数，插入的位置和插入的数据
+            linkList.prototype.insert = function(position,data){
+                // （1.对Position进行越界判断，插入的位置position不能为负数,并且不能超过链表的长度，
+                if (position<0||position>this.length){
+                    return false
+                    // 插入失败
+                }
+                // （2.根据data创建新的节点
+                // 插入的时候，情况一，插入到position=0的位置（head的后边）
+                var newNode = new Node(data)
+                if(position==0){
+                    // 先让新的节点指向head后边的节点,注意这点指向的写法（前边的.next=后边的节点）
+                    newNode.next = this.head
+                    // 之后再让head指向新的节点，这样就插进去了
+                      this.head = newNode
+                }else{
+                // (3.position=某个数字，positin=2，先找到2这个节点，把这个节点往后移
+                // 同时要设前一个节点，指向新的节点，初始的时候指向null
+                 var index= 0
+                 var current =this.head
+                 var previous = null
+                        //inde x= positon 的时候停住
+                     while(index++<position){
+                        previous = current
+                        current = current.next
+                       }
+                newNode.next = current
+                previous.next = newNode
+                // 注意指向的写法
+                }
+                //  (4.length+1
+                this.length +=1
+                return true
+                }
+                
+            // 4.getposition.，根据position，找到对应节点的数据返回
+            linkList.prototype.get = function(position){
+                // (1.越界判断
+                if (position<0||position>this.length){
+                    return null
+                }
+                // (2.获取对应的data
+                var current =this.head
+                var index = 0
+                while(index<position){
+                   current= current.next;
+                   index++ ;
+
+                }
+                return current.data
+
+            }
+            // 5.updata方法，跟获取节点比较像
+            linkList.prototype.updata = function (position,newdata){
+            // 越界判断
+            if(position<0||position>=this.length){
+                return false
+             }
+            //  查找正确的节点
+            var current = this.head
+            var index = 0
+            while(index<position){
+                current= current.next
+                index++
+            }
+            // 将position位置修改成新的data
+            current.data = newdata 
+            return true
+            
+            }
+            // 6.indexof,返回元素所在链表的索引，如果链表中没有该元素则返回-1
+            linkList.prototype.indexOf = function(data){
+                // 1.定义变量
+                var current =this.head
+                var index = 0;
+                // 开始查找
+                while(current){
+                    if(current.data==data){
+                        return index
+                    }
+                    current= current.next
+                    index++
+                }
+                // 找到最后没有找到，返回-1
+                return -1
+            }
+            // 7.removeAt(position),把特定位置的元素删除了
+            // 注意：没有指向的元素会自动被回收
+            linkList.prototype.removeAt = function(position){
+                // 越界判断，
+                if(position<0||position>=this.length){
+                    return false
+                }
+                // 判断是否删除的是第一个节点
+                if(position==0){
+                    this.head=this.head.next
+                }
+                else{
+                    // 不是第一个节点的话
+                    var index = 0;
+                    var current = this.head;
+                    while(current){
+                        if(current.next==position){
+                            current=current.next
+                            
+                        }
+                    }
+
+
+                }
+
+
+
+            }
+          
+
+
+            }
+
+
+            
+
+
+
+
+         
+        
+
+
+
+    </script>
+</body>
+</html>
