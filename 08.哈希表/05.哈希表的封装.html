@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <script>
+    //  封装哈希表的类，
+     function HashTable(){
+    //  1.属性
+    //  封装哈希表的类，我们采用链地址法实现哈希表，所以我们就需要数组storgage，每个数组里边保存的是key,value，就又用一个个小的数组（元组）保存这两个值
+    // count 记录当前已经存放的元素数量，当加载因子>0.75的时候，需要对数组进行扩容，<0.25的时候，减少容量（数组达到一定的长度之后就得重构）
+    // limit 数组的长度,质数
+    this.storage = []
+    this.count = 0;
+    this.limit = 7;
+    // 方法
+        // 哈希函数加到原型上
+        HashTable.prototype.hashFunc  = function(str,size){
+            // 要转化的话得先传进来一个字符串,str 
+            // 1.定义hashcode变量
+            var hashcode = 0;
+            // 2.霍纳算法，来计算hashcode的值
+            // charcodeAt这个函数，把单词转成unicode编码，比如，cats--->unicode编码（js的）
+            // 幂的底数用质数比较多，比如37,每一次做括号里边的操作
+            for(i = 0;i<str.length;i++){
+                // str.charCodeAt(i);
+                // 这个是把字符串转化为unicode编码值
+                hashCode = 37 * hashCode + str.charCodeAt(i)
+            }
+            // 取余操作
+            var index = hashCode%size
+            return index
+            }
+        
+    //1.插入和修改数据，放入key,value，如果在这个数组backet里，这是个新key，就是插入，如果是数组里已经存在key，就是修改
+    HashTable.prototype.put = function(key,value){
+        // 第一步：首先根据key获取索引值index，目的是讲数据插入到对应的位置（插入到哪个数组里），
+        // 比如插入age；18，用age 获取索引值，经过哈希函数插入到哈希表里索引值为1的位置，（索引值保存的是数组），就是相当于从左往右数第二个数组的位置
+        var index = this.hashFunc(key,value);
+
+        // 第二部：根据所以值取出这个桶(数组),给index   
+        this.bucket = this.storage[index]
+
+        // 1).如果这个桶bucket(数组)就不存在，创建桶，并放置在该位置,判断该backet是否为空
+        if(bucket==null){
+            this.bucket = [];
+            this.storage[index] = bucket
+        } 
+
+        // 第三部.判断是新增还是插入，用线性查找，看看数组里有没有这个key
+        for(var i=0;i<bucket.length;i++){
+            var tuple = bucket[i]
+            if(tuple[0]==value){
+                tuple[0]= value;
+                tuple[1] = value;
+                return
+            }
+            
+
+        }
+        // 第四部，如果不是修改，就是新增操作
+        bucket.push([key,value]);
+        this.count+=1
+        }
+    //2.获取元素
+      HashTable.prototype.get = function(key){
+        //根据key获取index,
+        var index = this.hashFunc(key,this.limit)
+        // 根据index获取bucket,把数组取出来，
+        var bucket = this.storage[index]
+
+        // 判断bucket是否为null，如果为null，直接返回null，里边就没这个元素
+        if(bucket==null){
+            return null
+        }
+
+        // 不为null，把bucket取出来，线性查找buket中的每一个key，是否等于传入的key，如果等于，返回对应的valuey
+        for(var i=0;i<bucket.length;i++){
+            var tuple = bucket[i]
+            if(tuple[0]==value){
+                return tuple[1]
+            }
+        }
+
+
+}
+
+}
+ </script>
+</body>
+</html>

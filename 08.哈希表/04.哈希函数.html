@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 哈希函数
+        // 将字符串转化成比较大的数字：hashcode
+        // 将hashcode压缩成较小的数字，得告诉我们数组的大小size，方便压缩
+        function hashFunc(str,size){
+            // 要转化的话得先传进来一个字符串,str 
+            // 1.定义hashcode变量
+            var hashcode = 0;
+            // 2.霍纳算法，来计算hashcode的值
+            // charcodeAt这个函数，把单词转成unicode编码，比如，cats--->unicode编码（js的）
+            // 幂的底数用质数比较多，比如37,每一次做括号里边的操作
+            // Pn(x)= a(n)x^n + a(n－1)x^(n-1) + …+a1x+a0转化为
+            // Pn(x)= (( (a(n)x +a(n－1))x + (a(n－2)x+ a(n－3)…)x+a1)x+a0,每次提取出来一个x
+            for(i = 0;i<str.length;i++){
+                // str.charCodeAt(i);
+                // 这个是把字符串转化为unicode编码值
+                hashCode = 37 * hashCode + str.charCodeAt(i)
+            }
+            // 取余操作
+            var index = hashCode%size
+            return index
+            }
+        // 测试一下行不行
+        alert(hashFunc("abc",7));
+
+    </script>
+</body>
+</html>
